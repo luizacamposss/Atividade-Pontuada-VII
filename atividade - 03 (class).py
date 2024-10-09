@@ -24,7 +24,6 @@ def calculo_imc(b:float, a:float):
         imc_list.append(imc)
     return imc_list
 
-
 # Resultados do IMC
 def resultado_imc(a):
     lista_grau_imc = []
@@ -47,10 +46,6 @@ lista_usuarios = []
 
 while True:
     lista_total = []
-    nomes = []
-    idades = []
-    alturas = []
-    pesos = []
     usuario = Usuario(
     nome = input("Digite seu nome: "),
     sobrenome = input("Digite seu sobrenome: "),
@@ -76,22 +71,21 @@ for pessoa in lista_total:
     lista_idade.append(pessoa.idade)
     lista_altura.append(pessoa.altura)
     lista_peso.append(pessoa.peso)
-
-calculo = calculo_imc(pesos,alturas)
+calculo = calculo_imc(lista_peso,lista_altura)
 situacao_imc = resultado_imc(calculo)
 
 # Exibindo os dados armazenados
 logoSenai()
 print("\n\033[35mDados dos usuários: \033[m")
 
-for i,a in enumerate(situacao_imc):
-    print("="*40)
-    print(f"\033[34mImc: {calculo[i]:.2f}")
-    print(f"A sua situação: {a}")
-    print("Nome:", nomes.usuario[i])
-    print("Idade:", idades.usuario[i])
-    print("Altura:", alturas.usuario[i], "metros")
-    print("Peso:", pesos.usuario[i], "quilogramas \033[m")    
+for i,nome in enumerate(lista_nome):
+    print(f"Nome: {nome} {lista_sobrenome[i]}")
+    print(f"Idade: {lista_idade[i]}")
+    print(f"Altura: {lista_altura[i]}")
+    print(f"Peso: {lista_peso[i]}")
+    print(f"Imc: {calculo[i]:.2f}")
+    print(f"Situação: {situacao_imc[i]}")
+    
 
 
     
